@@ -19,3 +19,10 @@ Este projeto faz parte do **Desafio Ambev**, focado no **monitoramento de evento
    ```sh
    git clone https://github.com/DeveloperStore-Team/developer-store-monitor.git
    cd developer-store-monitor
+
+2. 📌 Executando o Docker Compose**
+O projeto inclui um **docker-compose.yml** para facilitar a configuração dos serviços.  
+Para subir toda a infraestrutura (API, Banco de Dados, RabbitMQ, Consumer e Frontend), execute:
+
+```sh
+docker-compose up -d
