@@ -1,0 +1,59 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node Modules
+node_modules
+/.pnp
+.pnp.js
+
+# Build artifacts
+build
+dist
+.DS_Store
+.vscode
+.vs
+bin/
+obj/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# .NET Core
+project.lock.json
+*.pidb
+*.user
+*.dbmdl
+*.bak
+*.sqlite
+
+# Docker
+docker-compose.override.yml
+docker-compose.debug.yml
+docker-compose.production.yml
+docker-compose*.yaml
+.dockerignore
+
+# Other IDE files
+Thumbs.db
+desktop.ini
