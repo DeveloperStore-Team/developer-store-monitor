@@ -17,5 +17,5 @@ Este projeto faz parte do **Desafio Ambev**, focado no **monitoramento de evento
 
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
+   git clone https://github.com/DeveloperStore-Team/developer-store-monitor.git
+   cd developer-store-monitor
