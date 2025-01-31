@@ -31,11 +31,11 @@ const App: React.FC = () => {
       );
     });
 
-    connection.on("ReceiveSaleCanceled", (saleId: string) => {
-      console.log("Venda cancelada:", saleId);
+    connection.on("ReceiveSaleCanceled", (updatedSale: SaleCreatedEvent) => {
+      console.log("Venda cancelada:", updatedSale);
       setSales((prevSales) =>
         prevSales.map((sale) =>
-          sale.saleId === saleId ? { ...sale, status: "Cancelado" } : sale
+          sale.saleId === updatedSale.saleId ? { ...sale, status: "Cancelado" } : sale
         )
       );
     });
