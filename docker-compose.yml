@@ -1,34 +1,30 @@
 version: '3.8'
 
-services:
-  rabbitmq:
-    image: rabbitmq:3-management
-    container_name: rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+networks:
+  ambev_network:
+    external: true 
 
+services:
   backend:
     build:
       context: ./SalesEventConsumer
       dockerfile: Dockerfile
     container_name: sales-event-consumer
-    depends_on:
-      - rabbitmq
     environment:
       - RABBITMQ_HOST=rabbitmq
       - ASPNETCORE_URLS=http://+:5000
     ports:
       - "5000:5000"
       - "5001:5001"
+    networks:
+      - ambev_network
 
   frontend:
     build:
       context: ./SalesMonitorUI
       dockerfile: Dockerfile
+    networks:
+      - ambev_network
     ports:
       - "3000:80"
     restart: unless-stopped

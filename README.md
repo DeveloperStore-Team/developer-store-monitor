@@ -20,9 +20,26 @@ Este projeto faz parte do **Desafio Ambev**, focado no **monitoramento de evento
    git clone https://github.com/DeveloperStore-Team/developer-store-monitor.git
    cd developer-store-monitor
 
-2. 📌 Executando o Docker Compose**
-O projeto inclui um **docker-compose.yml** para facilitar a configuração dos serviços.  
-Para subir toda a infraestrutura (API, Banco de Dados, RabbitMQ, Consumer e Frontend), execute:
+# Configuração e Execução do Projeto com Docker Compose
+
+Este projeto utiliza **Docker Compose** para orquestrar múltiplos serviços, incluindo **RabbitMQ**, **PostgreSQL**, **Redis**, **MongoDB** e as aplicações backend e frontend. Como os serviços estão distribuídos em **diferentes docker-compose**, talvez seja necessário garantir que todos eles compartilhem a mesma **rede Docker** antes da execução.
+
+---
+
+## 🔧 **Configuração da Rede Docker**
+Antes de rodar os containers, crie manualmente a **rede Docker** compartilhada para que todos os serviços possam se comunicar.
+
 
 ```sh
-docker-compose up -d
+docker network create ambev_network
+```
+
+Se necessário, adicionar manualmente os conteineres após rodar o docker-compose de cada projeto:
+
+```sh
+docker network connect ambev_network ambev_developer_evaluation_webapi
+docker network connect ambev_network ambev_developer_evaluation_database
+docker network connect ambev_network rabbitmq
+```
+
+
