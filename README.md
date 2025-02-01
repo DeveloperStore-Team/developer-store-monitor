@@ -40,3 +40,53 @@ Para subir toda a infraestrutura (API, Banco de Dados, RabbitMQ, Consumer e Fron
 
 ```sh
 docker-compose up -d
+```
+
+### Conectar os containers manualmente à rede
+Pode ser necessária a configuração maual de um docker network para permitir que os conteiner se comuuniquem. Se os containers já foram iniciados, mas não estão na rede, você pode conectá-los manualmente:
+```sh
+docker network connect ambev_network sales-monitor-ui
+docker network connect ambev_network sales-event-consumer
+```
+Verifique o network novamente e corfime a presença dos conteineres:
+```sh
+docker network inspect ambev_network
+```
+
+## Teste com Swagger
+
+- Após iniciar os conteineres, acesse http://localhost:8081/swagger para acessar a API. 
+- Acessar http://localhost:3000/ para acessar a interface para acompanhar os eventos da fila. 
+- Teste um cadastro no endpoint da api: POST [/api/Sales]. Pode usar o exemplo abaixo:
+```Javascript
+    {
+      "consumer": "Diogo Camilo Santos",
+      "agency": "Teste Agência",
+      "items": [
+        {
+          "product": "PS5",
+          "quantity": 7,
+          "price": 500
+        }
+      ]
+    }
+```
+   Ao finalizar o cadastro, deve aparecer um retorno igual a esse:
+```Javascript 
+{
+  "data": {
+    "saleNumber": "4015563",
+    "consumer": "Diogo Camilo Santos",
+    "totalValue": 3150,
+    "discounts": 350
+  },
+  "success": true,
+  "message": "Venda criada com sucesso",
+  "errors": []
+}
+```
+- Após iniciar os conteineres, acesse http://localhost:8081/swagger para acessar a API. 
+
+O número da Venda (saleNumber) pode ser utilizado para testar os requests seguintes.
+
+Certifique-se de que essas portas não estejam ocupadas antes de iniciar a aplicação. 🚀
