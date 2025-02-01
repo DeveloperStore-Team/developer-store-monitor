@@ -4,14 +4,28 @@ Este projeto faz parte do **Desafio Ambev**, focado no **monitoramento de evento
 
 - **sales-monitoring-ui (React)** → Interface para acompanhar eventos em tempo real.
 - **SalesEventConsumer (.NET)** → API que consome eventos de vendas e os retransmite via SignalR.
-- **RabbitMQ** → Message broker utilizado para comunicação entre os serviços.
+  
+A proposta deste segundo projeto é acompanhar em tempo real as ocorrências relacionados a Venda; a fim de testar os recursos de messaging e eventos.
 
-## Tecnologias Utilizadas
+## 📌 Tecnologias Utilizadas
+- Backend: .NET Core 8, MassTransit, RabbitMQ e SignalR.
+- Frontend: React.js
+- Mensageria: RabbitMQ
+- Banco de Dados: PostgreSQL
+- Docker e Docker-Compose para orquestração dos containers.
 
-- **.NET 8** com **MassTransit** e **SignalR**
-- **React.js** com **WebSockets**
-- **RabbitMQ** para mensageria
-- **Docker** e **Docker Compose** para containerização
+## 📡 Configuração de Redes e Portas para rodar no Docker
+Os serviços utilizam a rede `ambev_network`, que deve ser criada antes de rodar os `docker-compose`. Abaixo estão as portas principais de cada serviço:
+
+- **Backend (.NET)**
+  - API de vendas
+  - Porta: `8080 (HTTP)`, `8081 (HTTPS)`
+
+- **Frontend (React)**
+  - Interface de monitoramento em tempo real
+  - Porta: `3000`
+
+Certifique-se de que essas portas não estejam ocupadas antes de iniciar a aplicação. 🚀
 
 ## Como Rodar o Projeto
 
